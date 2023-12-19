@@ -1,12 +1,14 @@
 import numpy as np
 import pandas as pd
+import keras
+
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
-from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
 from keras.layers import Dense, Embedding, LSTM, Bidirectional, Dropout, Reshape
 from keras.optimizers import Adam
+from keras_preprocessing.text import Tokenizer
 import warnings
 
 warnings.filterwarnings('ignore')
@@ -44,7 +46,7 @@ def buildModel():
 
     # Build the model
     model = Sequential()
-    model.add(Embedding(input_dim=max_features, output_dim=128, input_length=maxlen))
+    model.add(Embedding(input_dim=max_features, output_dim=128))
     model.add(Bidirectional(LSTM(32, name='lstm_layer')))
     model.add(Dense(32, activation="relu"))
     model.add(Dropout(0.5))
@@ -96,7 +98,6 @@ if __name__ == "__main__":
 
     # Gọi các hàm và tạo một dictionary chứa kết quả
     result = {
-        'buildModel': buildModel(),
         'prediction': predictText(parameter_from_php)
     }
 

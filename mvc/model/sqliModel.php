@@ -6,9 +6,6 @@ class sqliModel{
         $command = "python $pythonScript $text";
         $output = shell_exec($command);
         $result = json_decode($output, true);
-        
-        $buildModelResult = $result['buildModel'];
-        echo "Build Model Result: $buildModelResult";
 
         // Lấy kết quả dự đoán
         $predictionResult = $result['prediction'];
