@@ -15,9 +15,11 @@
     <div id="result"></div>
 
     <script>
+
         $(document).ready(function() {
-            $("#submit").click(function() {
+            $("#submit").click(function(e) {
                 // Lấy dữ liệu từ input
+                e.preventDefault()
                 var textValue = $("#text").val();
 
                 // Gửi dữ liệu qua Ajax

@@ -64,10 +64,10 @@ def buildModel():
     model.build(input_shape=(None, maxlen))
     model.summary()
 
-    # import keras.callbacks
-    # class PrintEpochInfo(keras.callbacks.Callback):
-    #   def on_epoch_end(self, epoch, logs=None):
-    #     print(f'Epoch {epoch+1}/{epochs}, Loss: {logs["loss"]}, Accuracy: {logs["accuracy"]}, Validation Loss: {logs["val_loss"]}, Validation Accuracy: {logs["val_accuracy"]}')
+    import keras.callbacks
+    class PrintEpochInfo(keras.callbacks.Callback):
+      def on_epoch_end(self, epoch, logs=None):
+        print(f'Epoch {epoch+1}/{epochs}, Loss: {logs["loss"]}, Accuracy: {logs["accuracy"]}, Validation Loss: {logs["val_loss"]}, Validation Accuracy: {logs["val_accuracy"]}')
 
 
     # Train the model
